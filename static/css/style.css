@@ -9,7 +9,6 @@
 }
 
 body {
-    background-color: #9d88d3;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI Adjusted", "Segoe UI", "Liberation Sans", 'Roboto', sans-serif;
     font-size: 1.5em;
     color: white;
@@ -62,6 +61,7 @@ body {
 #content {
     margin: 2vh auto;
     width: 80vw;
+    overflow: auto;
 }
 
 h1 {
@@ -260,7 +260,7 @@ h2 {
     }
 }
 
-@media screen and (max-width: 1280px) {
+
     .grid-item {
         width: calc(100% / 3 - 10px);
     }
@@ -281,7 +281,7 @@ h2 {
         margin-top: 16px;
         margin-bottom: 8px;
     }
-}
+
 
 @media screen and (max-width: 1265px) {
     body {
@@ -368,3 +368,58 @@ td#setting-item-table-td > div.mdui-select {
     text-align: center;
     width: 100%;
 }
+
+.mdui-container-fluid{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* 页脚美化 */
+        #footer {
+            background: #f8f8fa;
+            border-top: 1px solid #e0e0e0;
+            padding: 32px 0 16px 0;
+            margin-top: 48px;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.03);
+        }
+
+        #footer-text {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #footer-text a {
+            display: block;
+            margin: 8px 12px;
+            padding: 10px 28px;
+            border-radius: 24px;
+            background: #fff;
+            color: #6c63ff;
+            font-weight: 500;
+            font-size: 16px;
+            text-decoration: none;
+            box-shadow: 0 1px 4px rgba(108, 99, 255, 0.08);
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+            border: 1px solid #ececff;
+        }
+
+        #footer-text a:hover {
+            background: #ececff;
+            color: #4b47c3;
+            box-shadow: 0 2px 8px rgba(108, 99, 255, 0.12);
+        }
+
+        #footer-text .footer-icon-text {
+            display: inline;
+        }
+
+        #footer-text .about-link {
+            vertical-align: middle;
+        }
+
+        #footer .mdui-typo {
+            margin-top: 18px;
+            color: #888;
+            font-size: 13px;
+        }

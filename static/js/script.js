@@ -1,5 +1,5 @@
 var LANGUAGES = {
-    "_": { defaultLanguage: "en", defaultVOLanguage: "ja", defaultSpeed: 20, defaultRandmo: "off" },
+    "_": { defaultLanguage: "cn", defaultVOLanguage: "cn", defaultSpeed: 20, defaultRandmo: "off" },
     "en": {
         audioList: [
             // TODO audio random weight
@@ -35,7 +35,8 @@ var LANGUAGES = {
             "CREDITS:inspiration": "Inspiration"
         },
         cardImage: "img/card_en.jpg"
-    }, "cn": {
+    }, 
+    "cn": {
         audioList: [
             "audio/cn/gululu.mp3",
             "audio/cn/gururu.mp3",
@@ -72,7 +73,8 @@ var LANGUAGES = {
 
         },
         cardImage: "img/card_cn.jpg"
-    }, "zh-tw": {
+    }, 
+    "zh-tw": {
         audioList: [
             "audio/cn/gululu.mp3",
             "audio/cn/gururu.mp3",
@@ -275,10 +277,10 @@ const progress = [0, 1];
 (() => {
     const $ = mdui.$;
 
-    // initialize cachedObjects variable to store cached object URLs
+    // 初始化 cachedObjects 变量用于存储已缓存的对象URL
     var cachedObjects = {};
 
-    // function to try caching an object URL and return it if present in cache or else fetch it and cache it
+    // 尝试缓存静态对象，如果已缓存则直接返回，否则异步获取并缓存
     function cacheStaticObj(origUrl) {
         if (cachedObjects[origUrl]) {
             return cachedObjects[origUrl];
@@ -300,13 +302,13 @@ const progress = [0, 1];
 
     let firstSquish = true;
 
-    // This code tries to retrieve the saved language 'lang' from localStorage. If it is not found or if its value is null, then it defaults to "en". 
+    // 获取本地存储的语言设置，如果没有则使用默认值
     var current_language = localStorage.getItem("lang") || LANGUAGES._.defaultLanguage;
     var current_vo_language = localStorage.getItem("volang") || LANGUAGES._.defaultVOLanguage;
     var current_speed = localStorage.getItem("speed") || LANGUAGES._.defaultSpeed;
     var current_random_type = localStorage.getItem("random") || LANGUAGES._.defaultRandmo;
 
-    // function that takes a textId, optional language and whether to use fallback/ default language for translation. It returns the translated text in the given language or if it cannot find the translation, in the default fallback language.
+    // 获取本地化文本，支持回退到英文
     function getLocalText(textId, language = null, fallback = true) {
         let curLang = LANGUAGES[language || current_language];
         let localTexts = curLang.texts;
@@ -322,7 +324,7 @@ const progress = [0, 1];
         else return null;
     }
 
-    // function that updates all the relevant text elements with the translations in the chosen language.
+    // 更新页面所有相关文本为当前选择的语言
     function multiLangMutation() {
         let curLang = LANGUAGES[current_language];
         let localTexts = curLang.texts;
@@ -332,28 +334,27 @@ const progress = [0, 1];
                     document.getElementById(textId).innerHTML = value; // replaces the innerHTML of the element with the given textId with its translated version.
         });
         refreshDynamicTexts()
-        document.getElementById("herta-card").src = "static/" + curLang.cardImage; // sets the image of element with id "herta-card" to the translated version in the selected language.
+        //document.getElementById("herta-card").src = "static/" + curLang.cardImage; // sets the image of element with id "herta-card" to the translated version in the selected language.
     }
 
-    multiLangMutation() // the function multiLangMutation is called initially when the page loads.
+    multiLangMutation() // 页面加载时立即调用多语言替换函数
 
-    // function that returns the list of audio files for the selected language
+    // 获取当前语音语言的音频列表
     function getLocalAudioList() {
         return LANGUAGES[current_vo_language].audioList;
     }
 
-    // get global counter element and initialize its respective counts
+    // 获取本地计数器元素并初始化
     const localCounter = document.querySelector('#local-counter');
     let localCount = localStorage.getItem('count-v2') || 0;
 
-    // display counter
+    // 显示计数器
     localCounter.textContent = localCount.toLocaleString('en-US');
 
-    // initialize timer variable and add event listener to the counter button element
+    // 初始化计数按钮并添加事件监听
     const counterButton = document.querySelector('#counter-button');
 
-    // Preload
-
+    // 预加载音频并转为Base64
     async function convertMp3FilesToBase64(dict) {
         const promises = [];
         for (const lang in dict) {
@@ -374,11 +375,13 @@ const progress = [0, 1];
         return dict;
     }
 
+    // 更新进度条显示
     function upadteProgress() {
         progress[0] += 1
         counterButton.innerText = `${((progress[0] / progress[1]) * 100) | 0}%`
     }
 
+    // 加载并编码音频为Base64
     function loadAndEncode(url) {
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
@@ -407,6 +410,7 @@ const progress = [0, 1];
         });
     }
 
+    // 添加计数按钮点击事件
     function addBtnEvent() {
         counterButton.addEventListener('click', (e) => {
             localCount++;
@@ -420,7 +424,7 @@ const progress = [0, 1];
     }
 
     window.onload = function () {
-        // Calling method
+        // 页面加载后，预加载音频并初始化按钮事件
         convertMp3FilesToBase64(LANGUAGES)
             .catch(error => {
                 console.error(error);
@@ -432,19 +436,18 @@ const progress = [0, 1];
             });
     }
 
-
-    // try caching the hertaa1.gif and hertaa2.gif images by calling the tryCacheUrl function
+    // 缓存动画图片
     cacheStaticObj("img/hertaa1.gif");
     cacheStaticObj("img/hertaa2.gif");
 
-    // Define a function that takes an array as an argument and returns a random item from the array
+    // 从数组中随机选取一个元素
     function randomChoice(myArr) {
         const randomIndex = Math.floor(Math.random() * myArr.length);
         const randomItem = myArr[randomIndex];
         return randomItem;
     }
 
-    // Define a function that shuffles the items in an array randomly using Fisher-Yates algorithm
+    // 随机打乱数组顺序（Fisher-Yates算法）
     function randomShuffle(myArr) {
         for (let i = myArr.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -453,6 +456,7 @@ const progress = [0, 1];
         return myArr;
     }
 
+    // 获取随机音频URL
     function getRandomAudioUrl() {
         var localAudioList = getLocalAudioList();
         if (current_vo_language == "ja") {
@@ -463,6 +467,7 @@ const progress = [0, 1];
         return localAudioList[randomIndex];
     }
 
+    // 播放音频
     function playKuru() {
         let audioUrl;
         if (firstSquish) {
@@ -479,6 +484,7 @@ const progress = [0, 1];
         });
     }
 
+    // 动画效果：黑塔图片从右向左移动
     function animateHerta() {
         let id = null;
         const random = Math.floor(Math.random() * 2) + 1;
@@ -520,7 +526,7 @@ const progress = [0, 1];
         }, 12);
     }
 
-    // This function creates ripples on a button click and removes it after 300ms.
+    // 按钮点击涟漪效果
     function triggerRipple(e) {
         let ripple = document.createElement("span");
 
@@ -540,7 +546,7 @@ const progress = [0, 1];
         }, 300);
     }
 
-    // This function retrieves localized dynamic text based on a given language code, and randomly replaces an element with one of the translations. 
+    // 刷新所有动态文本（如多种描述等）
     function refreshDynamicTexts() {
         if (progress[0] !== progress[1]) return;
         let curLang = LANGUAGES[current_language];
@@ -552,12 +558,12 @@ const progress = [0, 1];
         });
     }
 
-    // NOTE the deployment on Github pages is stopped and deprecated. This tip is not useful anymore.
+    // NOTE Github pages 部署已废弃，相关跳转已注释
     // if (location.hostname.endsWith("duiqt.github.io")) {
     //     window.location.href = "https://herta.onrender.com";
     // }
 
-    // This function create bilibili icon in 2 cases: activated & inactivated
+    // 生成bilibili图标SVG
     function bilibiliIcon(color) {
         return `<i class="mdui-list-item-icon mdui-icon">
         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" style="fill: ${color};">
@@ -567,7 +573,7 @@ const progress = [0, 1];
         </i>`;
     }
 
-    // This func adds avatars for credits and with href for those having social link
+    // 生成头像（带社交链接）
     function addAvatar(socialLink, currentIcon) {
         if (!currentIcon.includes('https://')) {
             currentIcon = 'static/credits/' + currentIcon;
@@ -577,7 +583,7 @@ const progress = [0, 1];
         return `<a href="${socialLink}" target="_blank">${avatar}</a>`;
     }
 
-    // This function fetches data stored in a JSON file and displays it in a dialog box.
+    // 获取credits列表并弹窗显示
     function showCredits() {
         fetch("static/credits/list.json").then(response => response.json()).then((data) => {
             var contributors = data.contributors;
@@ -645,123 +651,167 @@ const progress = [0, 1];
         });
     }
 
+    // 绑定 credits 按钮事件
     $("#show-credits-opt").on("click", () => showCredits())
 
+    // 显示设置弹窗（圆角简约风格）
     function showOptions() {
-        mdui.dialog({
-            title: 'Options',
-            content: `
-<div style="min-height: 350px;" class="mdui-typo">
-    <table style="width:100%">
-        <tr>
-            <td style="width: 33.33%">
-                <label id="options-txt-lang">Page Language</label>
-            </td>
-            <td style="width: 33.33%"></td>
-            <td id="setting-item-table-td" style="width: 33.33%">
-                <select id="language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
-                    <option value="en">English</option>
-                    <option value="cn">简体中文</option>
-                    <option value="zh-tw">繁體中文</option>
-                    <option value="ja">日本語</option>
-                    <option value="kr">한국어</option>
-                    <option value="id">Bahasa Indonesia</option>
-                    <option value="pt">Português-BR</option>
-                    <option value="vi">Việt Nam</option>
-                    <option value="tr">Türkçe</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 33.33%">
-                <label id="options-txt-vo-lang">Voice-Over Language</label>
-            </td>
-            <td style="width: 33.33%"></td>
-            <td id="setting-item-table-td" style="width: 33.33%">
-                <select id="vo-language-selector" class="mdui-select" mdui-select='{"position": "bottom"}'>
-                    <option value="ja">日本語</option>
-                    <option value="cn">中文</option>
-                    <option value="en">English</option>
-                    <option value="kr">한국어</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 33.33%">
-                <label id="options-txt-random_speed">Random speed</label>
-            </td>
-            <td style="width: 33.33%"></td>
-            <td id="setting-item-table-td" style="width: 33.33%">
-                <select id="random-speed-type" class="mdui-select" mdui-select='{"position": "bottom"}'>
-                    <option value="off">OFF</option>
-                    <option value="on">ON</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 33.33%">
-                <label id="options-txt-speed">Speed</label>
-            </td>
-            <td style="width: 33.33%"></td>
-            <td id="setting-item-table-td" style="width: 33.33%">
-                <label class="mdui-slider mdui-slider-discrete">
-                    <input type="range" step="1" min="0" max="95" id="speed-progress-bar"/>
-                </label>
-            </td>
-        </tr>
-    </table>
-</div>`,
-            buttons: [
-                {
-                    text: getLocalText("dialogs-close")
-                }
-            ],
-            history: false,
-            onOpen: (_inst) => {
-                $("#vo-language-selector").val(current_vo_language);
-                $("#language-selector").val(current_language);
-                $("#random-speed-type").val(current_random_type);
-                $("#speed-progress-bar").val(current_speed);
+        if (document.getElementById('custom-options-dialog')) return;
 
-                if (current_random_type == "on") {
-                    $("#speed-progress-bar").prop("disabled", true);
-                } else {
-                    $("#speed-progress-bar").removeAttr("disabled");
-                }
+        // 弹窗遮罩
+        const dialog = document.createElement('div');
+        dialog.id = 'custom-options-dialog';
+        dialog.style.position = 'fixed';
+        dialog.style.left = '0';
+        dialog.style.top = '0';
+        dialog.style.width = '100vw';
+        dialog.style.height = '100vh';
+        dialog.style.background = 'rgba(0,0,0,0.18)';
+        dialog.style.zIndex = '9999';
+        dialog.style.display = 'flex';
+        dialog.style.alignItems = 'center';
+        dialog.style.justifyContent = 'center';
 
-                $("#language-selector").on("change", (ev) => {
-                    current_language = ev.target.value;
-                    localStorage.setItem("lang", ev.target.value);
-                    multiLangMutation();
-                });
+        // 弹窗内容
+        const content = document.createElement('div');
+        content.style.background = '#fff';
+        content.style.borderRadius = '18px';
+        content.style.padding = '32px 28px 24px 28px';
+        content.style.minWidth = '320px';
+        content.style.maxWidth = '92vw';
+        content.style.boxShadow = '0 6px 32px 0 rgba(0,0,0,0.10)';
+        content.style.display = 'flex';
+        content.style.flexDirection = 'column';
+        content.style.gap = '18px';
+        content.style.fontFamily = 'system-ui, sans-serif';
 
-                $("#vo-language-selector").on("change", (ev) => {
-                    current_vo_language = ev.target.value;
-                    localStorage.setItem("volang", ev.target.value);
-                });
+        // 通用行样式
+        function makeRow(inner) {
+            const row = document.createElement('div');
+            row.style.display = 'flex';
+            row.style.alignItems = 'center';
+            row.style.gap = '12px';
+            row.innerHTML = inner;
+            return row;
+        }
 
-                $("#random-speed-type").on("change", (ev) => {
-                    current_random_type = ev.target.value;
-                    localStorage.setItem("random", ev.target.value);
-                    if (current_random_type == "on") {
-                        $("#speed-progress-bar").prop("disabled", true);
-                        mdui.mutation();
-                    } else {
-                        $("#speed-progress-bar").removeAttr("disabled");
-                        mdui.mutation();
-                    }
-                });
+        // 语言选项
+        const langRow = makeRow(`
+            <label id="options-txt-lang" style="flex:1; font-size:15px; color:#333;">${getLocalText('options-txt-lang')}</label>
+            <select id="language-selector" style="flex:2; border-radius:8px; border:1px solid #e0e0e0; padding:7px 12px; font-size:15px; background:#f7f7fa;">
+                <option value="cn">简体中文</option>
+                <!-- <option value="en">English</option>
+                <option value="zh-tw">繁體中文</option>
+                <option value="ja">日本語</option>
+                <option value="kr">한국어</option>
+                <option value="id">Bahasa Indonesia</option>
+                <option value="pt">Português-BR</option>
+                <option value="vi">Việt Nam</option>
+                <option value="tr">Türkçe</option> -->
+            </select>
+        `);
 
-                $("#speed-progress-bar").on("change", (ev) => {
-                    current_speed = ev.target.value;
-                    localStorage.setItem("speed", ev.target.value);
-                });
+        // VO语言选项
+        const voRow = makeRow(`
+            <label id="options-txt-vo-lang" style="flex:1; font-size:15px; color:#333;">${getLocalText('options-txt-vo-lang')}</label>
+            <select id="vo-language-selector" style="flex:2; border-radius:8px; border:1px solid #e0e0e0; padding:7px 12px; font-size:15px; background:#f7f7fa;">
+                <option value="cn">中文</option>
+                <!-- <option value="en">English</option>
+                <option value="ja">日本語</option>
+                <option value="kr">한국어</option> -->
+            </select>
+        `);
 
-                multiLangMutation();
-                mdui.mutation();
+        // 随机速度选项
+        const randomRow = makeRow(`
+            <label id="options-txt-random_speed" style="flex:1; font-size:15px; color:#333;">${getLocalText('options-txt-random_speed')}</label>
+            <select id="random-speed-type" style="flex:2; border-radius:8px; border:1px solid #e0e0e0; padding:7px 12px; font-size:15px; background:#f7f7fa;">
+                <option value="off">OFF</option>
+                <option value="on">ON</option>
+            </select>
+        `);
+
+        // 速度滑块
+        const speedRow = makeRow(`
+            <label id="options-txt-speed" style="flex:1; font-size:15px; color:#333;">${getLocalText('options-txt-speed')}</label>
+            <input type="range" step="1" min="0" max="95" id="speed-progress-bar" style="flex:2; margin-left:8px; accent-color:#1976d2; border-radius:8px; height:4px; background:#e0e0e0;" />
+        `);
+
+        // 关闭按钮
+        const closeBtn = document.createElement('button');
+        closeBtn.textContent = getLocalText('dialogs-close');
+        closeBtn.style.margin = '18px auto 0 auto';
+        closeBtn.style.display = 'block';
+        closeBtn.style.padding = '10px 36px';
+        closeBtn.style.background = '#1976d2';
+        closeBtn.style.color = '#fff';
+        closeBtn.style.border = 'none';
+        closeBtn.style.borderRadius = '22px';
+        closeBtn.style.fontSize = '16px';
+        closeBtn.style.fontWeight = '500';
+        closeBtn.style.letterSpacing = '1px';
+        closeBtn.style.boxShadow = '0 2px 8px 0 rgba(25,118,210,0.08)';
+        closeBtn.style.cursor = 'pointer';
+        closeBtn.onmouseover = () => closeBtn.style.background = '#1565c0';
+        closeBtn.onmouseout = () => closeBtn.style.background = '#1976d2';
+
+        // 组装内容
+        content.appendChild(langRow);
+        content.appendChild(voRow);
+        content.appendChild(randomRow);
+        content.appendChild(speedRow);
+        content.appendChild(closeBtn);
+        dialog.appendChild(content);
+        document.body.appendChild(dialog);
+
+        // 设置初始值
+        document.getElementById('language-selector').value = current_language;
+        document.getElementById('vo-language-selector').value = current_vo_language;
+        document.getElementById('random-speed-type').value = current_random_type;
+        document.getElementById('speed-progress-bar').value = current_speed;
+
+        // 随机速度控制滑块可用性
+        function updateSliderState() {
+            const slider = document.getElementById('speed-progress-bar');
+            if (document.getElementById('random-speed-type').value === 'on') {
+                slider.disabled = true;
+                slider.style.opacity = '0.5';
+            } else {
+                slider.disabled = false;
+                slider.style.opacity = '1';
             }
+        }
+        updateSliderState();
+
+        // 事件绑定
+        document.getElementById('language-selector').addEventListener('change', (ev) => {
+            current_language = ev.target.value;
+            localStorage.setItem('lang', ev.target.value);
+            multiLangMutation();
         });
+        document.getElementById('vo-language-selector').addEventListener('change', (ev) => {
+            current_vo_language = ev.target.value;
+            localStorage.setItem('volang', ev.target.value);
+        });
+        document.getElementById('random-speed-type').addEventListener('change', (ev) => {
+            current_random_type = ev.target.value;
+            localStorage.setItem('random', ev.target.value);
+            updateSliderState();
+        });
+        document.getElementById('speed-progress-bar').addEventListener('change', (ev) => {
+            current_speed = ev.target.value;
+            localStorage.setItem('speed', ev.target.value);
+        });
+
+        // 关闭弹窗
+        closeBtn.onclick = function () {
+            dialog.remove();
+        };
+        // 点击遮罩关闭
+        dialog.onclick = function (e) {
+            if (e.target === dialog) dialog.remove();
+        };
     }
 
     $("#show-options-opt").on("click", () => showOptions())
-})(); 
+})();
