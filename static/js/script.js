@@ -180,7 +180,7 @@ const progress = [0, 1];
             // 自动播放背景音乐
             if (!bgmStarted) {
                 bgmStarted = true;
-                bgmAudio = new Audio('https://m801.music.126.net/20250616212614/cf19a14ae74b4d108fb3068fbef9c5d0/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/45350747861/59dd/0449/f165/35d53c3da99866e81d14c72da620c323.mp3'); // 请确保此路径下有bgm.mp3
+                bgmAudio = new Audio('static/audio/bgm.mp3'); // 请确保此路径下有bgm.mp3
                 bgmAudio.volume = 0.5;
                 bgmAudio.loop = true;
                 // 兼容部分浏览器策略
