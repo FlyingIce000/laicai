@@ -1,275 +1,36 @@
-var LANGUAGES = {
-    "_": { defaultLanguage: "cn", defaultVOLanguage: "cn", defaultSpeed: 20, defaultRandmo: "off" },
-    "en": {
-        audioList: [
-            // TODO audio random weight
-            "audio/en/en_1.mp3",
-            "audio/en/en_2.mp3",
-            "audio/en/en_3.mp3"
-        ],
-        texts: {
-            "page-title": "Welcome to herta kuru~",
-            "doc-title": "Kuru Kuru~",
-            "page-descriptions": "The website for Herta, the <del>annoying</del> cutest genius Honkai: Star Rail character out there.",
-            "counter-descriptions": ["The kuru~ has been squished for", "Herta has been kuru~ed for"],
-            "counter-unit": "times",
-            "counter-button": ["Squish the kuru~!", "Kuru kuru~!"],
-            "access-via-pages": "You're currently accessing via GitHub Pages. For users in China (Mainland) or some other regions, click <a href='https://herta.ft2.ltd/'>here to access the mirror on Netlify</a>. ",
-            "access-via-mirror": "Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>.",
-            "show-credits-text": "Show Credits",
-            "repository-desc": "GitHub Repo",
-            "options-txt-vo-lang": "Voice-Over Language",
-            "options-txt-random_speed": "Random speed",
-            "options-txt-speed": "Speed",
-            "options-txt-lang": "Page Language",
-            "dialogs-close": "Close",
-            "dialogs-credits-title": "Credits",
+// alert("我们这的憋佬仔\n脖上喜欢挂玉牌\n香炉供台上摆\n长大才开白黄牌\n虔诚拜三拜\n钱包里多几百\n易的是六合彩\n难的是等河牌\n来财，来\n上北下南左西右东\n东南东北\n西北西南\n步步高升\n八方来财\n四海为家家兴旺\n百事可乐\n千事吉祥\n万事如意\n顺风顺水\n天道酬勤\n鹏程万里\n宗旨利滚利\n对应， 好运， 八方来\n来，来财\n散了才能聚\n你不出手？\n说聊斋")
 
-            "CREDITS:main-dev": "Main Developer",
-            "CREDITS:code-contributor": "Code Contributor",
-            "CREDITS:artist": "Artist",
-            "CREDITS:localization": "Localization Contributor",
-            "CREDITS:localization:Korean": "Korean Localization Contributor",
-            "CREDITS:localization:Japanese": "Japanese Localization Contributor",
-            "CREDITS:localization:Indonesian": "Indonesian Localization Contributor",
-            "CREDITS:inspiration": "Inspiration"
-        },
-        cardImage: "img/card_en.jpg"
-    }, 
+//来财，来，来财
+
+var LANGUAGES = {
+    "_": { defaultLanguage: "cn", defaultVOLanguage: "cn", defaultSpeed: 20, defaultRandmo: "on" },
+    
     "cn": {
         audioList: [
-            "audio/cn/gululu.mp3",
-            "audio/cn/gururu.mp3",
-            "audio/cn/转圈圈.mp3",
-            "audio/cn/转圈圈咯.mp3",
-            "audio/cn/要坏掉了.mp3"
+            "static/audio/cn/lc.wav",
+            "static/audio/cn/l.wav",
+            "static/audio/cn/blz.wav",
+            "static/audio/cn/ck.wav",
+            "static/audio/cn/yly.wav",
+            "static/audio/cn/dzht.wav"
         ],
         texts: {
-            "page-title": "黑塔转圈圈",
-            "doc-title": "咕噜噜~",
-            "page-descriptions": "给黑塔酱写的小网站，对，就是那个<del>烦人的</del>最可爱的《崩坏：星穹铁道》角色！",
-            "counter-descriptions": ["黑塔已经咕噜噜~了", "黑塔已经转了"],
-            "counter-unit": ["次", "次圈圈"],
-            "counter-button": ["转圈圈~", "咕噜噜！"],
-            "access-via-pages": "您目前是通过 GitHub Pages 访问。对于中国大陆或其他一些地区的用户，请<a href='https://herta.ft2.ltd/'>单击此处访问 Netlify 上的镜像</a>。",
-            "access-via-mirror": "恭喜！你正在使用镜像站，这应当会加速在中国大陆及部分地区境内的访问。点此<a href='https://duiqt.github.io/herta_kuru/'>访问 GitHub Pages 上的源站</a>。",
+            "page-title": "八方来财",
+            "doc-title": "八方来财 - 鳖佬仔，挂玉牌，拜三拜，来财！",
+            "page-descriptions": "鳖佬仔，挂玉牌，拜三拜，好运八方来，来财，来，来财",
+            "counter-descriptions": ["八方来财", "天降横财", "来，来财！", "财从八方来"],
+            "counter-unit": ["来财", "虔诚拜三拜", ],
+            "counter-button": ["拜三拜", "来财"],
             "show-credits-text": "查看感谢页",
-            "repository-desc": "GitHub 仓库",
+            "repository-desc": "源代码",
             "options-txt-vo-lang": "语音语言",
             "options-txt-random_speed": "随机速度",
             "options-txt-speed": "速度",
             "options-txt-lang": "界面语言",
             "dialogs-close": "关闭",
-            "dialogs-credits-title": "制作人员名单",
-
-            "CREDITS:main-dev": "主要开发者",
-            "CREDITS:code-contributor": "代码贡献者",
-            "CREDITS:artist": "艺术家",
-            "CREDITS:localization": "本地化贡献者",
-            "CREDITS:localization:Korean": "韩国本地化贡献者",
-            "CREDITS:localization:Japanese": "日本本地化贡献者",
-            "CREDITS:localization:Indonesian": "印度尼西亚本地化贡献者",
-            "CREDITS:inspiration": "灵感来源"
-
         },
-        cardImage: "img/card_cn.jpg"
     }, 
-    "zh-tw": {
-        audioList: [
-            "audio/cn/gululu.mp3",
-            "audio/cn/gururu.mp3",
-            "audio/cn/转圈圈.mp3",
-            "audio/cn/转圈圈咯.mp3",
-            "audio/cn/要坏掉了.mp3"
-        ],
-        texts: {
-            "page-title": "* 黑塔轉圈圈 ✩‧₊˚",
-            "doc-title": "咕嚕咕嚕～",
-            "page-descriptions": "致敬全宇宙超級無敵絕頂聰明黑塔醬的小網站<br>沒錯就是那位惹人愛的<del>很煩的</del>《崩壞：星穹鐵道》角色！",
-            "counter-descriptions": ["黑塔已經咕嚕咕嚕了", "黑塔已經轉了"],
-            "counter-unit": ["次", "次圈圈"],
-            "counter-button": ["* 轉圈圈 ✩‧₊˚", "* 咕嚕咕嚕 ✩‧₊˚"],
-            "access-via-pages": "你目前正在透過 GitHub Pages 存取。至於從中國大陸和其他區域來的使用者，請點擊此處 <a href='https://herta.ft2.ltd/'> 訪問 Netlify 上的鏡像網站</a>。",
-            "access-via-mirror": "你目前正在使用鏡像網站，若是從中國大陸和其他區域來的存取，或多或少會變流暢。請點擊此處 <a href='https://duiqt.github.io/herta_kuru/'> 訪問 GitHub Pages 上的原始網站</a>。",
-            "show-credits-text": "顯示致謝名單",
-            "repository-desc": "GitHub Repo",
-            "show-options-text": "設定",
-            "options-txt-vo-lang": "語音語言",
-            "options-txt-random_speed": "隨機速度",
-            "options-txt-speed": "速度",
-            "options-txt-lang": "介面語言",
-            "dialogs-close": "關閉",
-            "dialogs-credits-title": "開發人員名單",
-            "dialogs_credits_content_text": "排序並無規則",
-
-            "CREDITS:main-dev": "主要開發者",
-            "CREDITS:code-contributor": "程式貢獻者",
-            "CREDITS:artist": "藝術家",
-            "CREDITS:localization": "在地化貢獻者",
-            "CREDITS:localization:Korean": "韓國在地化貢獻者",
-            "CREDITS:localization:Japanese": "日本在地化貢獻者",
-            "CREDITS:localization:Indonesian": "印尼在地化貢獻者",
-            "CREDITS:inspiration": "靈感來源"
-        },
-        cardImage: "img/card_en.jpg"
-    }, "ja": {
-        audioList: [
-            "audio/ja/kuruto.mp3",
-            "audio/ja/kuru1.mp3",
-            "audio/ja/kuru2.mp3",
-        ],
-        texts: {
-            "page-title": "ヘルタクルへようこそ~",
-            "doc-title": "クル クル~",
-            "page-descriptions": "このサイトはヘルタのために作られた、 あの崩壊：スターレイルの <del>悩ましい</del> かわいい天才キャラー。",
-            "counter-descriptions": "全世界のクル再生数",
-            "counter-unit": "回",
-            "counter-button": "クル クル~!",
-            "access-via-pages": "今アクセスしてるページはぎGitHubです。中国大陸まだは他の地域のユーサーはNetlifyのミラーに入るために、<a href='https://herta.ft2.ltd/'>ここにクリックして</a>ください。",
-            "access-via-mirror": "おめでとうございます！今はもうミラーサイトを使っています、中国大陸まだは他の地域のアクセス速度が速くなります。サイトのソースを見たいなら、<a href='https://duiqt.github.io/herta_kuru/'>ここにクリックして</a>、GitHubページで見てください。",
-            "show-credits-text": "Show Credits",
-            "repository-desc": "GitHub Repo",
-            "options-txt-vo-lang": "Voice-Over Language",
-            "options-txt-random_speed": "ランダム速度",
-            "options-txt-speed": "速度",
-            "options-txt-lang": "Page Language",
-            "dialogs-close": "Close",
-            "dialogs-credits-title": "Credits"
-        },
-        cardImage: "img/card_ja.jpg"
-    },
-    "kr": {
-        audioList: [
-            // TODO audio random weight
-            "audio/kr/kr_1.mp3",
-            "audio/kr/kr_2.mp3",
-            "audio/kr/kr_3.mp3"
-        ],
-        texts: {
-            "page-title": "빙글빙글 헤르타에 오신걸 환영합니다~",
-            "doc-title": "빙글빙글~",
-            "page-descriptions": "이 웹사이트는 붕괴: 스타레일의 가장 <del>짜증나는</del>귀여운 천재 헤르타를 위해 만들어졌습니다.",
-            "counter-descriptions": "전 세계에서",
-            "counter-unit": "번 빙글빙글",
-            "counter-button": "빙글빙글~!",
-            "access-via-pages": "현재 GitHub Pages를 통해 액세스하고 있습니다. 중국 본토나 일부 지역에 있는 사용자의 경우 <a href='https://herta.ft2.ltd/'>여기를 클릭하여 Netlify의 미러 사이트에 접속하세요</a>.",
-            "access-via-mirror": "축하합니다. 현재 미러 사이트를 통해 접속하고 있습니다. 이 사이트에선 중국 본토 및 일부 지역에서의 액세스 속도가 빨라집니다. <a href='https://duiqt.github.io/herta_kuru/'>여기를 클릭하여 GitHub Pages에 접속하세요</a>.",
-            "show-credits-text": "Show Credits",
-            "repository-desc": "GitHub Repo",
-            "options-txt-vo-lang": "Voice-Over Language",
-            "options-txt-random_speed": "무작위 속도",
-            "options-txt-speed": "속도",
-            "options-txt-lang": "Page Language",
-            "dialogs-close": "Close",
-            "dialogs-credits-title": "Credits"
-        },
-        cardImage: "img/card_kr.jpg"
-    },
-    "id": {
-        audioList: null,
-        texts: {
-            "page-title": "Selamat datang di Herta kuru~",
-            "doc-title": "Kuru Kuru~",
-            "page-descriptions": "Situs web yang dipersembahkan kepada Herta, sang Karakter Jenius <del>ngeselin</del> dari Honkai: Star Rail.",
-            "counter-descriptions": ["Kuru nya telah dipencet sebanyak", "Herta telah ter-kuru-kan sebanyak"],
-            "counter-unit": "kali",
-            "counter-button": ["Pencet kuru nya~!", "Kuru kuru~!"],
-            "access-via-pages": "Kamu saat ini sedang mengakses melalui Laman GitHub. Untuk pengguna berdomisili di Tiongkok (Daratan) dan wilayah lainnya, silakan klik <a href='https://herta.ft2.ltd/'> di sini untuk mengakses mirror nya di Netlify</a>. ",
-            "access-via-mirror": "Selamat! Kamu sedang menggunakan situs mirror, yang mana seharusnya mempercepat akses untuk wilayah sekitar Tiongkok (daratan) dan wilayah lainnya . Silakan klik <a href='https://duiqt.github.io/herta_kuru/'> di sini untuk mengunjungi situs sumbernya pada Laman Github</a>.",
-            "show-credits-text": "Tampilkan Credit",
-            "repository-desc": "GitHub Repo",
-            "options-txt-vo-lang": "Voice-Over Language",
-            "options-txt-random_speed": "Kecepatan acak",
-            "options-txt-speed": "kecepatan",
-            "options-txt-lang": "Page Language",
-            "dialogs-close": "Close",
-            "dialogs-credits-title": "Credits"
-        },
-        cardImage: "img/card_id.jpg"
-    },
-    "pt": {
-        audioList: null,
-        texts: {
-            "page-title": "Bem-vindo ao kuru~ da herta",
-            "doc-title": "Kuru Kuru~",
-            "page-descriptions": "O site para a Herta, a personagem mais <del>irritante</del> fofa e gênia do Honkai: Star Rail que existe.",
-            "counter-descriptions": ["O kuru~ já  foi clicado", "Herta ja falou kuru~ "],
-            "counter-unit": "vezes",
-            "counter-button": "Kuru kuru~!",
-            "access-via-pages": "No momento, você está acessando por meio do GitHub Pages. Para usuários na China (continente) ou algumas regiões, clique <a href='https://herta.ft2.ltd/'>aqui pode acessar via Netlify</a>. ",
-            "access-via-mirror": "Parabéns! Você está usando um site espelho, o que deve acelerar o acesso na China (continente) e algumas regiões. Clique aqui para <a href='https://duiqt.github.io/herta_kuru/'>visitar o site de origem no GitHub Pages</a>.",
-            "show-credits-text": "Mostrar Créditos",
-            "repository-desc": "GitHub Repo",
-            "options-txt-vo-lang": "Idioma da voz",
-            "options-txt-random_speed": "Velocidade aleatória",
-            "options-txt-speed": "Velocidade",
-            "options-txt-lang": "Idioma da página",
-            "dialogs-close": "Fechar",
-            "dialogs-credits-title": "Créditos"
-        },
-        cardImage: "img/card_pt.jpg"
-          }, "tr": {
-        audioList: null,
-        texts: {
-            "page-title": "Herta Kuru'ya Hoşgeldiniz~",
-            "doc-title": "Kuru Kuru~",
-            "page-descriptions": "<del>Sinir bozucu</del> En sevimli, dahi Honkai: Star Rail karakteri Herta'nın web sitesi.",
-            "counter-descriptions": ["Kuru kuru ya bu kadar basıldı.", "Herta tarafından bu kadar kuru kurulandın"],
-            "counter-unit": "Kere",
-            "counter-button": ["Daha Fazla kuru~!", "Kuru kuru~!"],
-            "access-via-pages": "You're currently accessing via GitHub Pages. For users in China (Mainland) or some other regions, click <a href='https://herta.ft2.ltd/'>here to access the mirror on Netlify</a>. ",
-            "access-via-mirror": "Congratulations! You are using a mirror site, which should speed up access within China (Mainland) and some regions. Click here to <a href='https://duiqt.github.io/herta_kuru/'>visit the source site on GitHub Pages</a>.",
-            "show-credits-text": "Katkıda bulunanları göster",
-            "repository-desc": "GitHub Repo",
-            "options-txt-vo-lang": "Ses dili",
-            "options-txt-random_speed": "Rastgele hız",
-            "options-txt-speed": "Hızı",
-            "options-txt-lang": "Sayfa Dili",
-            "dialogs-close": "Kapat",
-            "dialogs-credits-title": "Katkıda bulunanlar",
-
-            "CREDITS:main-dev": "Ana Geliştirici",
-            "CREDITS:code-contributor": "Koda Katkıda Bulunan ",
-            "CREDITS:artist": "Sanatçı",
-            "CREDITS:localization": "Yerelleştirmede Katkıda Bulunan",
-            "CREDITS:localization:Korean": "Korece Yerelleştirmede Katkıda Bulunanlar",
-            "CREDITS:localization:Japanese": "Japonca Yerelleştirmede Katkıda Bulunan",
-            "CREDITS:localization:Indonesian": "Endonezce Yerelleştirmede Katkıda Bulunan",
-            "CREDITS:inspiration": "İlham Alınan"
-        },
-        cardImage: "img/card_en.jpg"
-    }, "vi": {
-        audioList: null,
-        texts: {
-            "page-title": "Chào mừng tới Herta kuru~",
-            "doc-title": "Kuru Kuru~",
-            "page-descriptions": "Trang web dành cho Herta, một thiên tài <del>phiền phức</del> dễ thương nhất trong Honkai: Star Rail.",
-            "counter-descriptions": ["Kuru~ này đã quay", "Herta đã quay"],
-            "counter-unit": "lần",
-            "counter-button": ["Quay kuru~!", "Kuru kuru~!"],
-            "access-via-pages": "Hiện bạn đang truy cập qua GitHub Pages. Với người dùng tại Trung Quốc Đại Lục hoặc một số khu vực khác, Click tại <a href='https://herta.ft2.ltd/'>đây để truy cập bản sao trên Netlify</a>. ",
-            "access-via-mirror": "Chúc mừng! bạn đang sử dụng bản sao, tăng tốc độ truy cập trong Trung Quốc Đại Lục và một số khu vực khác. Click tại <a href='https://duiqt.github.io/herta_kuru/'>đây để ghé thăm trang nguồn tại GitHub Pages</a>.",
-            "show-credits-text": "Hiện credits",
-            "show-options-text": "Cài đặt",
-            "repository-desc": "GitHub Repo",
-            "options-txt-vo-lang": "Ngôn ngữ lồng tiếng",
-            "options-txt-random_speed": "Tốc độ ngẫu nhiên",
-            "options-txt-speed": "Tốc độ",
-            "options-txt-lang": "Ngôn ngữ",
-            "dialogs-close": "Đóng",
-            "dialogs-credits-title": "Những người thực hiện",
-
-            "CREDITS:main-dev": "Developer chính",
-            "CREDITS:code-contributor": "Đóng góp code",
-            "CREDITS:artist": "Họa sĩ",
-            "CREDITS:localization": "Đóng góp bản dịch",
-            "CREDITS:localization:Korean": "Đóng góp bản dịch (Tiếng Hàn)",
-            "CREDITS:localization:Japanese": "Đóng góp bản dịch (Tiếng Nhật)",
-            "CREDITS:localization:Indonesian": "Đóng góp bản dịch (Tiếng Indonesia)",
-            "CREDITS:inspiration": "Ý tưởng"
-        },
-        cardImage: "img/card_en.jpg"
-    },
+    
 };
 
 const progress = [0, 1];
@@ -334,7 +95,6 @@ const progress = [0, 1];
                     document.getElementById(textId).innerHTML = value; // replaces the innerHTML of the element with the given textId with its translated version.
         });
         refreshDynamicTexts()
-        //document.getElementById("herta-card").src = "static/" + curLang.cardImage; // sets the image of element with id "herta-card" to the translated version in the selected language.
     }
 
     multiLangMutation() // 页面加载时立即调用多语言替换函数
@@ -412,7 +172,20 @@ const progress = [0, 1];
 
     // 添加计数按钮点击事件
     function addBtnEvent() {
+        // 新增：背景音乐播放器，仅首次点击时自动播放
+        let bgmStarted = false;
+        let bgmAudio = null;
+
         counterButton.addEventListener('click', (e) => {
+            // 自动播放背景音乐
+            if (!bgmStarted) {
+                bgmStarted = true;
+                bgmAudio = new Audio('https://m801.music.126.net/20250616212614/cf19a14ae74b4d108fb3068fbef9c5d0/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/45350747861/59dd/0449/f165/35d53c3da99866e81d14c72da620c323.mp3'); // 请确保此路径下有bgm.mp3
+                bgmAudio.volume = 0.5;
+                bgmAudio.loop = true;
+                // 兼容部分浏览器策略
+                bgmAudio.play().catch(() => {});
+            }
             localCount++;
             localCounter.textContent = localCount.toLocaleString('en-US');
             localStorage.setItem('count-v2', localCount);
@@ -437,8 +210,8 @@ const progress = [0, 1];
     }
 
     // 缓存动画图片
-    cacheStaticObj("img/hertaa1.gif");
-    cacheStaticObj("img/hertaa2.gif");
+    cacheStaticObj("img/lc/1.png");
+    cacheStaticObj("img/lc/2.png");
 
     // 从数组中随机选取一个元素
     function randomChoice(myArr) {
@@ -490,7 +263,7 @@ const progress = [0, 1];
         const random = Math.floor(Math.random() * 2) + 1;
         const elem = document.createElement("img");
         let RunSpeed = Math.floor(current_speed);
-        elem.src = cacheStaticObj(`img/hertaa${random}.gif`);
+        elem.src = cacheStaticObj(`img/lc/${random}.png`);
         elem.style.position = "absolute";
         elem.style.right = "-500px";
         elem.style.top = counterButton.getClientRects()[0].bottom + scrollY - 430 + "px"
@@ -583,77 +356,6 @@ const progress = [0, 1];
         return `<a href="${socialLink}" target="_blank">${avatar}</a>`;
     }
 
-    // 获取credits列表并弹窗显示
-    function showCredits() {
-        fetch("static/credits/list.json").then(response => response.json()).then((data) => {
-            var contributors = data.contributors;
-            contributors = randomShuffle(contributors);
-            var creditsHtmlContent = `<p>in no specific order</p>`;
-            creditsHtmlContent += `<ul class="mdui-list">`;
-            for (let i = 0; i < contributors.length; i++) {
-                var current = contributors[i];
-                let renderedName = current.username;
-                if (current.name != undefined) {
-                    renderedName += " (" + current.name + ")";
-                }
-                var socialMediaIcons = bilibiliIcon('#999999');
-                var socialLink = "";
-                $.each(current.socialmedia, (key, value) => {
-                    switch (key) {
-                        case "bilibili":
-                            let uid = value.uid;
-                            let username = value.username;
-                            socialMediaIcons = `<a href="https://space.bilibili.com/${uid}" title="${username}" target="_blank">`;
-                            socialMediaIcons += bilibiliIcon('#00aeec');
-                            socialMediaIcons += `</a>`;
-                            break;
-
-                        case "twitter":
-                            socialLink = "https://twitter.com/" + value;
-                            break;
-
-                        case "github":
-                            socialLink = "https://github.com/" + value;
-                            break;
-                    }
-                });
-                creditsHtmlContent += `<div class="mdui-collapse">
-    <div class="mdui-collapse-item">
-        <div class="mdui-collapse-item-header">
-            <li class="mdui-list-item mdui-ripple">
-                <div class="mdui-list-item-avatar mdlist-ava-fix">
-                    ${addAvatar(socialLink, current.icon)}
-                </div>
-                <div class="mdui-list-item-content">
-                    <div class="mdui-list-item-title">${renderedName}</div>
-                    <div class="mdui-list-item-text mdui-list-item-one-line">
-                        <span class="mdui-text-color-theme-text">${getLocalText("CREDITS:" + current.thing)}</span>
-                    </div>
-                </div>
-                ${socialMediaIcons}
-            </li>
-        </div>
-    </div>
-</div>`;
-            }
-            creditsHtmlContent += `</ul>`;
-
-            mdui.dialog({
-                title: getLocalText("dialogs-credits-title"),
-                content: creditsHtmlContent,
-                buttons: [
-                    {
-                        text: getLocalText("dialogs-close")
-                    }
-                ],
-                history: false
-            });
-        });
-    }
-
-    // 绑定 credits 按钮事件
-    $("#show-credits-opt").on("click", () => showCredits())
-
     // 显示设置弹窗（圆角简约风格）
     function showOptions() {
         if (document.getElementById('custom-options-dialog')) return;
@@ -700,14 +402,6 @@ const progress = [0, 1];
             <label id="options-txt-lang" style="flex:1; font-size:15px; color:#333;">${getLocalText('options-txt-lang')}</label>
             <select id="language-selector" style="flex:2; border-radius:8px; border:1px solid #e0e0e0; padding:7px 12px; font-size:15px; background:#f7f7fa;">
                 <option value="cn">简体中文</option>
-                <!-- <option value="en">English</option>
-                <option value="zh-tw">繁體中文</option>
-                <option value="ja">日本語</option>
-                <option value="kr">한국어</option>
-                <option value="id">Bahasa Indonesia</option>
-                <option value="pt">Português-BR</option>
-                <option value="vi">Việt Nam</option>
-                <option value="tr">Türkçe</option> -->
             </select>
         `);
 
@@ -716,9 +410,6 @@ const progress = [0, 1];
             <label id="options-txt-vo-lang" style="flex:1; font-size:15px; color:#333;">${getLocalText('options-txt-vo-lang')}</label>
             <select id="vo-language-selector" style="flex:2; border-radius:8px; border:1px solid #e0e0e0; padding:7px 12px; font-size:15px; background:#f7f7fa;">
                 <option value="cn">中文</option>
-                <!-- <option value="en">English</option>
-                <option value="ja">日本語</option>
-                <option value="kr">한국어</option> -->
             </select>
         `);
 
@@ -737,11 +428,32 @@ const progress = [0, 1];
             <input type="range" step="1" min="0" max="95" id="speed-progress-bar" style="flex:2; margin-left:8px; accent-color:#1976d2; border-radius:8px; height:4px; background:#e0e0e0;" />
         `);
 
+        // 关于按钮
+        const aboutBtn = document.createElement('button');
+        aboutBtn.textContent = '关于';
+        aboutBtn.style.margin = '18px 8px 0 0';
+        aboutBtn.style.display = 'inline-block';
+        aboutBtn.style.padding = '10px 24px';
+        aboutBtn.style.background = '#e0e0e0';
+        aboutBtn.style.color = '#333';
+        aboutBtn.style.border = 'none';
+        aboutBtn.style.borderRadius = '22px';
+        aboutBtn.style.fontSize = '16px';
+        aboutBtn.style.fontWeight = '500';
+        aboutBtn.style.letterSpacing = '1px';
+        aboutBtn.style.boxShadow = '0 2px 8px 0 rgba(25,118,210,0.04)';
+        aboutBtn.style.cursor = 'pointer';
+        aboutBtn.onmouseover = () => aboutBtn.style.background = '#d0d0d0';
+        aboutBtn.onmouseout = () => aboutBtn.style.background = '#e0e0e0';
+        aboutBtn.onclick = function () {
+            window.alert('八方来财：\nhttps://github.com/FlyingIce000/laicai\n\n原项目：\nhttps://github.com/duiqt/herta_kuru\n\n本站仅供娱乐，禁止用于商业用途。\n若您认为本站侵犯了您的合法权益，请联系ceo@xxidc.top🙏');
+        };
+
         // 关闭按钮
         const closeBtn = document.createElement('button');
         closeBtn.textContent = getLocalText('dialogs-close');
         closeBtn.style.margin = '18px auto 0 auto';
-        closeBtn.style.display = 'block';
+        closeBtn.style.display = 'inline-block';
         closeBtn.style.padding = '10px 36px';
         closeBtn.style.background = '#1976d2';
         closeBtn.style.color = '#fff';
@@ -755,12 +467,20 @@ const progress = [0, 1];
         closeBtn.onmouseover = () => closeBtn.style.background = '#1565c0';
         closeBtn.onmouseout = () => closeBtn.style.background = '#1976d2';
 
+        // 按钮行
+        const btnRow = document.createElement('div');
+        btnRow.style.display = 'flex';
+        btnRow.style.justifyContent = 'center';
+        btnRow.style.gap = '8px';
+        btnRow.appendChild(aboutBtn);
+        btnRow.appendChild(closeBtn);
+
         // 组装内容
         content.appendChild(langRow);
         content.appendChild(voRow);
         content.appendChild(randomRow);
         content.appendChild(speedRow);
-        content.appendChild(closeBtn);
+        content.appendChild(btnRow);
         dialog.appendChild(content);
         document.body.appendChild(dialog);
 
@@ -815,3 +535,133 @@ const progress = [0, 1];
 
     $("#show-options-opt").on("click", () => showOptions())
 })();
+
+// 雪花飘落效果（随机图片、🕯️、💰符号）
+const snowflakeCount = 20;
+function randomBetween(a, b) {
+    return Math.random() * (b - a) + a;
+}
+function createSnowflake() {
+    // 随机选择内容：图片、🕯️、💰
+    const types = [
+        { type: 'img', src: 'static/img/ll.png' },
+        { type: 'emoji', char: '🕯️' },
+        { type: 'emoji', char: '💰' }
+    ];
+    const pick = types[Math.floor(Math.random() * types.length)];
+
+    let snowflake;
+    if (pick.type === 'img') {
+        snowflake = document.createElement('img');
+        snowflake.src = pick.src;
+    } else {
+        snowflake = document.createElement('span');
+        snowflake.textContent = pick.char;
+        snowflake.style.fontSize = '30px'; // 固定为30px
+        snowflake.style.fontFamily = 'system-ui,apple color emoji,Segoe UI Emoji,NotoColorEmoji,Segoe UI Symbol,Android Emoji,EmojiSymbols';
+    }
+
+    snowflake.style.position = 'fixed';
+    snowflake.style.zIndex = 9999;
+    snowflake.style.pointerEvents = 'none';
+
+    // 判断是否为PC端或大屏幕设备
+    let minSize = 60, maxSize = 80;
+    if (window.innerWidth >= 1024) {
+        minSize = 100;
+        maxSize = 150;
+    }
+    const size = randomBetween(minSize, maxSize);
+    if (pick.type === 'img') {
+        snowflake.style.width = size + 'px';
+    } // emoji 固定30px，不再设置
+    snowflake.style.opacity = randomBetween(0.7, 1);
+    snowflake.style.left = randomBetween(0, window.innerWidth - (pick.type === 'img' ? size : 50)) + 'px';
+    snowflake.style.top = '-60px';
+    snowflake.style.transition = 'top linear, left linear, opacity linear';
+    document.body.appendChild(snowflake);
+
+    const duration = randomBetween(2, 3); // seconds
+    const endLeft = parseFloat(snowflake.style.left) + randomBetween(-100, 100);
+    setTimeout(() => {
+        snowflake.style.transition = `top ${duration}s linear, left ${duration}s linear, opacity ${duration}s linear`;
+        snowflake.style.top = window.innerHeight + 60 + 'px';
+        snowflake.style.left = Math.max(0, Math.min(window.innerWidth - (pick.type === 'img' ? size : 30), endLeft)) + 'px';
+        snowflake.style.opacity = 0.5;
+    }, 50);
+
+    setTimeout(() => {
+        snowflake.remove();
+    }, duration * 1000 + 1000);
+}
+setInterval(() => {
+    if (document.hidden) return;
+    createSnowflake();
+}, 500);
+// 初始生成几片
+for (let i = 0; i < snowflakeCount; i++) {
+    setTimeout(createSnowflake, i * 1000);
+}
+
+// --- 新增：定时旋转图片特效 ---
+function showRotatingImage() {
+    const img = document.createElement('img');
+    img.src = 'static/img/ll2.png'; // 可替换为任意图片
+    img.style.position = 'fixed';
+    img.style.zIndex = 9999;
+    img.style.pointerEvents = 'none';
+    img.style.transition = 'opacity 0.3s, transform 0.3s';
+    img.style.opacity = '0';
+
+    // 判断是否为PC端或大屏幕设备
+    let size = 180;
+    if (window.innerWidth >= 1024) {
+        size = 500;
+    }
+
+    if (window.innerWidth >= 760 || window.innerWidth < 1024) {
+        size = 300;
+    }
+
+    img.style.width = size + 'px';
+    img.style.height = size + 'px';
+
+    // 随机位置
+    const left = Math.random() * (window.innerWidth - size - 20);
+    const top = Math.random() * (window.innerHeight - size - 20);
+    img.style.left = left + 'px';
+    img.style.top = top + 'px';
+
+    // 初始旋转角度
+    img.style.transform = 'rotate(0deg) scale(0.7)';
+
+    document.body.appendChild(img);
+
+    // 出现动画
+    setTimeout(() => {
+        img.style.opacity = '1';
+        img.style.transform = 'rotate(0deg) scale(1)';
+    }, 10);
+
+    // 旋转动画
+    setTimeout(() => {
+        img.style.transition = 'transform 1.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s';
+        img.style.transform = 'rotate(360deg) scale(1.1)';
+    }, 300);
+
+    // 消失动画
+    setTimeout(() => {
+        img.style.opacity = '0';
+        img.style.transform = 'rotate(360deg) scale(0.7)';
+    }, 1700);
+
+    // 移除节点
+    setTimeout(() => {
+        img.remove();
+    }, 2000);
+}
+
+showRotatingImage();
+// 每3秒触发一次
+setInterval(showRotatingImage, 3000);
+

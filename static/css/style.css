@@ -5,25 +5,27 @@
     -ms-touch-action: manipulation;
     touch-action: manipulation;
     /* strange margin-right occurs when vw<500px */
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI Adjusted", "Segoe UI", "Liberation Sans", 'Roboto', sans-serif;
+    font-family: 'DingLieNuoYan', -apple-system, BlinkMacSystemFont, "Segoe UI Adjusted", "Segoe UI", "Liberation Sans", 'Roboto', sans-serif;
     font-size: 1.5em;
-    color: white;
+    color: #ffd700;
     overflow-x: hidden;
 }
 
 .wrapper {
     position: relative;
+    border: 2px #ffc400 solid;
+    box-shadow: #ffc400 0 0 10px;
 }
 
 #wrapper-background {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url("../img/hertaa1.gif");
+    background-image: url("../img/bflc.png");
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: contain;
@@ -31,7 +33,7 @@ body {
 }
 
 #wrapper-background-filter {
-    background-color: #9d88d3f5;
+    background-color: #ffd900b2;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -45,7 +47,7 @@ body {
     transform: translateX(-50%);
     width: 100px;
     height: 100px;
-    background-image: url(../img/hertaa1.gif);
+    background-image: url(../img/lc/1.png);
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: contain;
@@ -67,7 +69,7 @@ body {
 h1 {
     text-align: center;
     font-size: 3em;
-    font-weight: bold;
+    font-weight: 900;
 }
 
 h2 {
@@ -114,7 +116,8 @@ h2 {
 }
 
 #counter-container>p {
-    text-shadow: #9d88d3 0 0 10px, #9d88d3 0 0 10px, #9d88d3 0 0 10px, #9d88d3 0 0 10px, #9d88d3 0 0 10px;
+    text-shadow: #ffee00 0 0 10px, #ffee00 0 0 10px, #ffee00 0 0 10px, #ffee00 0 0 10px, #ffee00 0 0 10px;
+    color: #f8f8fa;
 }
 
 #global-counter {
@@ -123,10 +126,13 @@ h2 {
     line-height: 38px;
 }
 
-#local-counter {
-    color: #574f84;
+#local-counter,
+#jsq,
+#counter-descriptions {
+    color: #fff;
     /* font-size: 0.75em; */
     font-size: 2em;
+    text-shadow: #ffee00 0 0 10px, #ffee00 0 0 10px, #ffee00 0 0 10px, #ffee00 0 0 10px, #ffee00 0 0 10px;
 }
 
 #counter-button {
@@ -191,6 +197,7 @@ h2 {
     gap: 30px;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 #herta-card {
@@ -261,26 +268,26 @@ h2 {
 }
 
 
-    .grid-item {
-        width: calc(100% / 3 - 10px);
-    }
+.grid-item {
+    width: calc(100% / 3 - 10px);
+}
 
-    #footer {
-        flex-wrap: wrap;
-    }
+#footer {
+    flex-wrap: wrap;
+}
 
-    #footer-text {
-        text-align: center;
-    }
+#footer-text {
+    text-align: center;
+}
 
-    #footer-header-text {
-        margin-bottom: 8px;
-    }
+#footer-header-text {
+    margin-bottom: 8px;
+}
 
-    #footer-repository-text {
-        margin-top: 16px;
-        margin-bottom: 8px;
-    }
+#footer-repository-text {
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
 
 
 @media screen and (max-width: 1265px) {
@@ -301,9 +308,6 @@ h2 {
 }
 
 @media screen and (max-width: 510px) {
-    h1 {
-        font-size: 2.5em;
-    }
 
     h2 {
         font-size: 1.25em;
@@ -322,9 +326,6 @@ h2 {
 }
 
 @media screen and (max-width: 430px) {
-    h1 {
-        font-size: 2em;
-    }
 
     #subtitle-seperator {
         margin-top: 10px;
@@ -364,62 +365,189 @@ td#setting-item-table-td {
     text-align: right;
 }
 
-td#setting-item-table-td > div.mdui-select {
+td#setting-item-table-td>div.mdui-select {
     text-align: center;
     width: 100%;
 }
 
-.mdui-container-fluid{
+.mdui-container-fluid {
     padding-left: 0;
     padding-right: 0;
 }
 
 /* 页脚美化 */
-        #footer {
-            background: #f8f8fa;
-            border-top: 1px solid #e0e0e0;
-            padding: 32px 0 16px 0;
-            margin-top: 48px;
-            box-shadow: 0 -2px 8px rgba(0,0,0,0.03);
-        }
+#footer {
+    background: #f8f8fa5f;
+    border-top: 1px solid #e0e0e0;
+    padding: 32px 0 16px 0;
+    margin-top: 48px;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03);
+}
 
-        #footer-text {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
+#footer-text {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
 
-        #footer-text a {
-            display: block;
-            margin: 8px 12px;
-            padding: 10px 28px;
-            border-radius: 24px;
-            background: #fff;
-            color: #6c63ff;
-            font-weight: 500;
-            font-size: 16px;
-            text-decoration: none;
-            box-shadow: 0 1px 4px rgba(108, 99, 255, 0.08);
-            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-            border: 1px solid #ececff;
-        }
+#footer-text a {
+    display: block;
+    margin: 8px 12px;
+    padding: 10px 28px;
+    border-radius: 24px;
+    background: #ffffff5f;
+    color: #6c63ff;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    box-shadow: 0 1px 4px rgba(108, 99, 255, 0.08);
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    border: 1px solid #ececff;
+}
 
-        #footer-text a:hover {
-            background: #ececff;
-            color: #4b47c3;
-            box-shadow: 0 2px 8px rgba(108, 99, 255, 0.12);
-        }
+#footer-text a:hover {
+    background: #ececff;
+    color: #4b47c3;
+    box-shadow: 0 2px 8px rgba(108, 99, 255, 0.12);
+}
 
-        #footer-text .footer-icon-text {
-            display: inline;
-        }
+#footer-text .footer-icon-text {
+    display: inline;
+}
 
-        #footer-text .about-link {
-            vertical-align: middle;
-        }
+#footer-text .about-link {
+    vertical-align: middle;
+}
 
-        #footer .mdui-typo {
-            margin-top: 18px;
-            color: #888;
-            font-size: 13px;
-        }
+#footer .mdui-typo {
+    margin-top: 18px;
+    color: #888;
+    font-size: 13px;
+}
+
+#subtitle-seperator {
+    border: none;
+    border-top: 3px double #ffffff;
+    margin: 24px 0;
+}
+
+#page-descriptions {
+    color: #ff0000;
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-shadow: 0 1px 0 #fffbe6;
+}
+
+#counter-button {
+    background: linear-gradient(90deg, #ffe066 0%, #ffd700 60%, #fffbe6 100%);
+    color: #7a5c00;
+    border: 2px solid #ff0000;
+    border-radius: 32px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 12px 48px;
+    margin: 18px 0 0 0;
+    box-shadow: 0 4px 24px 0 #ffd70099, 0 1.5px 0 0 #fffbe6 inset;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    letter-spacing: 1px;
+    border-radius: 15px;
+}
+
+#counter-button:hover {
+    background: linear-gradient(90deg, #ffd700 0%, #ffe066 100%);
+    color: #fffbe6;
+    box-shadow: 0 8px 32px 0 #ffd700cc, 0 1.5px 0 0 #fffbe6 inset;
+}
+
+/* 滚动条金色 */
+::-webkit-scrollbar {
+    width: 12px;
+    background: #fffbe6;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(120deg, #ffd700 60%, #ffe066 100%);
+    border-radius: 8px;
+    border: 2px solid #fffbe6;
+}
+
+::selection {
+    background: #ffd700;
+    color: #fffbe6;
+}
+
+.top-left-img {
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    width: 180px;
+}
+
+.top-right-img {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    width: 180px;
+}
+
+.bottom-left-img {
+    position: fixed;
+    bottom: 100px;
+    left: 20px;
+    width: 180px;
+}
+
+.bottom-right-img {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    width: 180px;
+}
+
+@media screen and (min-width: 760px) {
+
+    .bottom-right-img,
+    .bottom-left-img,
+    .top-right-img,
+    .top-left-img {
+        width: 300px;
+    }
+}
+
+/* 炫酷变色效果 */
+#page-title {
+    background: linear-gradient(270deg, #ff0000, #001aff, #ff00ff, #8c00ff);
+    background-size: 600% 600%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: title-gradient-move 4s ease-in-out infinite;
+}
+
+@keyframes title-gradient-move {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 引入定制字体 */
+/* @font-face {
+    font-family: 'DingLieNuoYan';
+    src: url('../font/dinglienuoyanfont.woff2') format('woff2');
+    font-display: swap;
+    font-weight: normal;
+    font-style: normal;
+} */
+
+/* 全局应用定制字体 */
+/* body, html, * {
+    font-family: 'DingLieNuoYan', -apple-system, BlinkMacSystemFont, "Segoe UI Adjusted", "Segoe UI", "Liberation Sans", 'Roboto', sans-serif !important;
+} */
